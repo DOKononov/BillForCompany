@@ -13,6 +13,10 @@
 		4055BFCD28B0D80B00007C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4055BFCC28B0D80B00007C16 /* Assets.xcassets */; };
 		4055BFD028B0D80B00007C16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4055BFCE28B0D80B00007C16 /* LaunchScreen.storyboard */; };
 		4055BFD828B0D8A900007C16 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055BFD728B0D8A900007C16 /* MainVC.swift */; };
+		4055BFE128B0DC7D00007C16 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4055BFE028B0DC7D00007C16 /* SnapKit */; };
+		4055BFE328B0DF7600007C16 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055BFE228B0DF7600007C16 /* MainViewModel.swift */; };
+		4055BFE528B0E29000007C16 /* TotalBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055BFE428B0E29000007C16 /* TotalBillView.swift */; };
+		4055BFE828B206C000007C16 /* PersonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055BFE728B206C000007C16 /* PersonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,9 @@
 		4055BFCF28B0D80B00007C16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4055BFD128B0D80B00007C16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4055BFD728B0D8A900007C16 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		4055BFE228B0DF7600007C16 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		4055BFE428B0E29000007C16 /* TotalBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalBillView.swift; sourceTree = "<group>"; };
+		4055BFE728B206C000007C16 /* PersonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4055BFE128B0DC7D00007C16 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,13 +66,24 @@
 			children = (
 				4055BFC028B0D80900007C16 /* AppDelegate.swift */,
 				4055BFC228B0D80900007C16 /* SceneDelegate.swift */,
-				4055BFD728B0D8A900007C16 /* MainVC.swift */,
+				4055BFE628B0E2CA00007C16 /* MainVC */,
+				4055BFE428B0E29000007C16 /* TotalBillView.swift */,
+				4055BFE728B206C000007C16 /* PersonsView.swift */,
 				4055BFCC28B0D80B00007C16 /* Assets.xcassets */,
 				4055BFCE28B0D80B00007C16 /* LaunchScreen.storyboard */,
 				4055BFD128B0D80B00007C16 /* Info.plist */,
 				4055BFC928B0D80900007C16 /* BillForCompany.xcdatamodeld */,
 			);
 			path = BillForCompany;
+			sourceTree = "<group>";
+		};
+		4055BFE628B0E2CA00007C16 /* MainVC */ = {
+			isa = PBXGroup;
+			children = (
+				4055BFD728B0D8A900007C16 /* MainVC.swift */,
+				4055BFE228B0DF7600007C16 /* MainViewModel.swift */,
+			);
+			path = MainVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +102,9 @@
 			dependencies = (
 			);
 			name = BillForCompany;
+			packageProductDependencies = (
+				4055BFE028B0DC7D00007C16 /* SnapKit */,
+			);
 			productName = BillForCompany;
 			productReference = 4055BFBD28B0D80900007C16 /* BillForCompany.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +133,9 @@
 				Base,
 			);
 			mainGroup = 4055BFB428B0D80900007C16;
+			packageReferences = (
+				4055BFDF28B0DC7D00007C16 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 4055BFBE28B0D80900007C16 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,9 +162,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4055BFE528B0E29000007C16 /* TotalBillView.swift in Sources */,
+				4055BFE328B0DF7600007C16 /* MainViewModel.swift in Sources */,
 				4055BFCB28B0D80900007C16 /* BillForCompany.xcdatamodeld in Sources */,
 				4055BFD828B0D8A900007C16 /* MainVC.swift in Sources */,
 				4055BFC128B0D80900007C16 /* AppDelegate.swift in Sources */,
+				4055BFE828B206C000007C16 /* PersonsView.swift in Sources */,
 				4055BFC328B0D80900007C16 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4055BFDF28B0DC7D00007C16 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4055BFE028B0DC7D00007C16 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4055BFDF28B0DC7D00007C16 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4055BFC928B0D80900007C16 /* BillForCompany.xcdatamodeld */ = {
