@@ -10,6 +10,8 @@ import UIKit
 
 final class PersonsView: UIView {
     
+    var delegate: MainVCDelegate?
+            
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Persons"
@@ -27,31 +29,31 @@ final class PersonsView: UIView {
         return view
     }()
     
-    private lazy var minusButton: UIButton = {
+    lazy var minusButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("−", for: .normal)
         button.tintColor = #colorLiteral(red: 0.4510066509, green: 0.4966486692, blue: 0.5633206367, alpha: 1)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 60, weight: .light)
+        button.addTarget(self, action: #selector(minusButtonDidTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private lazy var plusButton: UIButton = {
+    lazy var plusButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("+", for: .normal)
         button.tintColor = #colorLiteral(red: 0.4510066509, green: 0.4966486692, blue: 0.5633206367, alpha: 1)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 60, weight: .light)
+        amountLabel.text = "2"
+        button.addTarget(self, action: #selector(plusButtonDidTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private let amountLabel: UILabel = {
         let label = UILabel()
-        label.text = "2"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 48, weight: .semibold)
-        
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -74,12 +76,19 @@ final class PersonsView: UIView {
         backView.addSubview(amountLabel)
     }
     
+    @objc  func minusButtonDidTapped() {
+        amountLabel.text =  delegate?.viewModel.minusButtonDidTapped(minusButton, plusButton)
+    }
+    
+    @objc private func plusButtonDidTapped() {
+        amountLabel.text = delegate?.viewModel.plusButtonDidTapped(plusButton, minusButton)
+    }
+    
     private func setConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(8)
             make.height.equalTo(self.snp.height).multipliedBy(0.2).priority(.low)
-            
         }
         
         backView.snp.makeConstraints { make in
@@ -103,6 +112,5 @@ final class PersonsView: UIView {
             make.top.bottom.equalToSuperview().offset(8)
         }
     }
-    
     
 }

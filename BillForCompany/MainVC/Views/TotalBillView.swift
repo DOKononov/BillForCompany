@@ -10,6 +10,8 @@ import SnapKit
 
 final class TotalBillView: UIView {
     
+    var delegate: MainVCDelegate?
+        
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Total Bill"
@@ -22,10 +24,11 @@ final class TotalBillView: UIView {
     let summTextField: UITextField = {
         let tf = UITextField(frame: .zero)
         tf.backgroundColor = #colorLiteral(red: 0.9561659694, green: 0.9591339231, blue: 0.9530903697, alpha: 1)
+        tf.tintColor = #colorLiteral(red: 0.639077723, green: 0.2492567599, blue: 0.6254395843, alpha: 1)
         tf.layer.cornerRadius = 10
         tf.textColor = .black
         tf.font = UIFont.systemFont(ofSize: 48, weight: .semibold)
-        tf.text = "123"
+        tf.text = "0"
         tf.textAlignment = .center
         tf.keyboardType = .numberPad
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -37,6 +40,7 @@ final class TotalBillView: UIView {
         
         setupView()
         setConstraints()
+        summTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -57,11 +61,17 @@ final class TotalBillView: UIView {
         
         summTextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
             make.height.greaterThanOrEqualTo(self.snp.height).multipliedBy(0.5)
         }
     }
     
+}
+
+extension TotalBillView: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if let str = textField.text, let bill = Int(str) {
+            delegate?.viewModel.totalBill = bill
+        }
+    }
 }

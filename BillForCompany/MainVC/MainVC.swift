@@ -8,7 +8,13 @@
 import UIKit
 import SnapKit
 
-class MainVC: UIViewController {
+protocol MainVCDelegate {
+    var viewModel: MainViewProtocol {get set}
+}
+
+class MainVC: UIViewController, MainVCDelegate {
+    
+    var viewModel: MainViewProtocol = MainViewModel()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -46,18 +52,28 @@ class MainVC: UIViewController {
         button.backgroundColor = #colorLiteral(red: 0.639077723, green: 0.2492567599, blue: 0.6254395843, alpha: 1)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .light)
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(calculateDidPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    let totalBillView = TotalBillView()
-    let personsView = PersonsView()
+    private let totalBillView = TotalBillView()
+    private let personsView = PersonsView()
+    private let tipsView = TipsView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         setConstraints()
+        delegate()
+        totalBillView.summTextField.becomeFirstResponder()
+    }
+    
+    private func delegate() {
+        tipsView.delegate = self
+        personsView.delegate = self
+        totalBillView.delegate = self
     }
     
     private func setupViews() {
@@ -68,6 +84,19 @@ class MainVC: UIViewController {
         view.addSubview(totalBillView)
         view.addSubview(personsView)
         view.addSubview(calculateButton)
+        view.addSubview(tipsView)
+    }
+    
+    @objc private func calculateDidPressed() {
+        print("bill", viewModel.totalBill, "persons", viewModel.personsCounter, "tips", viewModel.tipsCount)
+        let result = ( viewModel.totalBill + ( viewModel.totalBill * viewModel.tipsCount / 100 ) ) / viewModel.personsCounter
+        descriptionLabel.text = String(result) + " per person"
+        descriptionLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        descriptionLabel.textColor = #colorLiteral(red: 0.639077723, green: 0.2492567599, blue: 0.6254395843, alpha: 1)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 
 }
@@ -106,7 +135,15 @@ extension MainVC {
             make.height.equalTo(personsView.snp.width).multipliedBy(0.28)
         }
         
+        tipsView.snp.makeConstraints { make in
+            make.top.equalTo(personsView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.height.equalTo(personsView.snp.width).multipliedBy(0.28)
+        }
+        
         calculateButton.snp.makeConstraints { make in
+            make.top.equalTo(tipsView.snp.bottom).offset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
@@ -114,3 +151,5 @@ extension MainVC {
         }
     }
 }
+
+
