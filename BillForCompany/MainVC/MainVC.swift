@@ -88,11 +88,7 @@ class MainVC: UIViewController, MainVCDelegate {
     }
     
     @objc private func calculateDidPressed() {
-        print("bill", viewModel.totalBill, "persons", viewModel.personsCounter, "tips", viewModel.tipsCount)
-        let result = ( viewModel.totalBill + ( viewModel.totalBill * viewModel.tipsCount / 100 ) ) / viewModel.personsCounter
-        descriptionLabel.text = String(result) + " per person"
-        descriptionLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        descriptionLabel.textColor = #colorLiteral(red: 0.639077723, green: 0.2492567599, blue: 0.6254395843, alpha: 1)
+        showAlert(title: "Bill per person:", message: viewModel.calcResult(), preferredStyle: .alert)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

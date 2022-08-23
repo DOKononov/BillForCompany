@@ -17,6 +17,8 @@
 		4055BFE328B0DF7600007C16 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055BFE228B0DF7600007C16 /* MainViewModel.swift */; };
 		4055BFE528B0E29000007C16 /* TotalBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055BFE428B0E29000007C16 /* TotalBillView.swift */; };
 		4055BFE828B206C000007C16 /* PersonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055BFE728B206C000007C16 /* PersonsView.swift */; };
+		409BCA9B28B4C258003D1912 /* VC+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409BCA9A28B4C258003D1912 /* VC+alert.swift */; };
+		409BCA9D28B4C7B5003D1912 /* Double+myRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409BCA9C28B4C7B5003D1912 /* Double+myRound.swift */; };
 		40CA168328B28F6C004DEB35 /* TipsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA168228B28F6C004DEB35 /* TipsCollectionViewCell.swift */; };
 		40CA168928B2912B004DEB35 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA168828B2912B004DEB35 /* TipsView.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +35,8 @@
 		4055BFE228B0DF7600007C16 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4055BFE428B0E29000007C16 /* TotalBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalBillView.swift; sourceTree = "<group>"; };
 		4055BFE728B206C000007C16 /* PersonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsView.swift; sourceTree = "<group>"; };
+		409BCA9A28B4C258003D1912 /* VC+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VC+alert.swift"; sourceTree = "<group>"; };
+		409BCA9C28B4C7B5003D1912 /* Double+myRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+myRound.swift"; sourceTree = "<group>"; };
 		40CA168228B28F6C004DEB35 /* TipsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCollectionViewCell.swift; sourceTree = "<group>"; };
 		40CA168828B2912B004DEB35 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +72,7 @@
 		4055BFBF28B0D80900007C16 /* BillForCompany */ = {
 			isa = PBXGroup;
 			children = (
+				409BCA9E28B4CC28003D1912 /* Helpers */,
 				40CA168428B28F74004DEB35 /* Application */,
 				4055BFE628B0E2CA00007C16 /* MainVC */,
 				4055BFCC28B0D80B00007C16 /* Assets.xcassets */,
@@ -86,6 +91,15 @@
 				40CA168528B28F90004DEB35 /* Views */,
 			);
 			path = MainVC;
+			sourceTree = "<group>";
+		};
+		409BCA9E28B4CC28003D1912 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				409BCA9A28B4C258003D1912 /* VC+alert.swift */,
+				409BCA9C28B4C7B5003D1912 /* Double+myRound.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		40CA168428B28F74004DEB35 /* Application */ = {
@@ -201,6 +215,8 @@
 				4055BFC128B0D80900007C16 /* AppDelegate.swift in Sources */,
 				4055BFE828B206C000007C16 /* PersonsView.swift in Sources */,
 				4055BFC328B0D80900007C16 /* SceneDelegate.swift in Sources */,
+				409BCA9D28B4C7B5003D1912 /* Double+myRound.swift in Sources */,
+				409BCA9B28B4C258003D1912 /* VC+alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

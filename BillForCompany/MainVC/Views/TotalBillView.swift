@@ -70,7 +70,7 @@ final class TotalBillView: UIView {
 
 extension TotalBillView: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if let str = textField.text, let bill = Int(str) {
+        if let str = textField.text, let bill = Double(str) {
             delegate?.viewModel.totalBill = bill
         }
     }
