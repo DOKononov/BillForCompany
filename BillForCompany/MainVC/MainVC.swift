@@ -20,7 +20,6 @@ class MainVC: UIViewController, MainVCDelegate {
         let label = UILabel()
         label.text = "Total Bill"
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 40, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -77,6 +76,7 @@ class MainVC: UIViewController, MainVCDelegate {
     }
     
     private func setupViews() {
+        titleLabel.font = UIFont.systemFont(ofSize: view.frame.height * 0.046, weight: .light)
         view.backgroundColor = #colorLiteral(red: 0.9813271165, green: 0.9813271165, blue: 0.9813271165, alpha: 1)
         view.addSubview(titleLabel)
         view.addSubview(logoImageView)
@@ -108,7 +108,7 @@ extension MainVC {
         logoImageView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.centerX.equalTo(view.snp.centerX)
-            make.height.width.equalTo(view.snp.width).multipliedBy(0.5)
+            make.height.width.equalTo(view.snp.height).multipliedBy(0.2)
         }
         
         descriptionLabel.snp.makeConstraints { make in
@@ -135,7 +135,7 @@ extension MainVC {
             make.top.equalTo(personsView.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.height.equalTo(personsView.snp.width).multipliedBy(0.28)
+            make.height.equalTo(tipsView.snp.width).multipliedBy(0.28)
         }
         
         calculateButton.snp.makeConstraints { make in

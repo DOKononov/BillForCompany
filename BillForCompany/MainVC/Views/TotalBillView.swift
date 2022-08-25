@@ -57,12 +57,13 @@ final class TotalBillView: UIView {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(8)
+            make.height.lessThanOrEqualTo(self.snp.height).multipliedBy(0.2)
         }
         
         summTextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.greaterThanOrEqualTo(self.snp.height).multipliedBy(0.5)
+            make.height.greaterThanOrEqualTo(self.snp.height).multipliedBy(0.7)
         }
     }
     

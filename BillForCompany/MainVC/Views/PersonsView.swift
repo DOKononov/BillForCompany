@@ -88,12 +88,13 @@ final class PersonsView: UIView {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(8)
-            make.height.equalTo(self.snp.height).multipliedBy(0.2).priority(.low)
+            make.height.equalTo(self.snp.height).multipliedBy(0.2)
         }
         
         backView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(0)
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.leading.trailing.bottom.equalToSuperview()
+            make.height.greaterThanOrEqualTo(self.snp.height).multipliedBy(0.7)
         }
         
         minusButton.snp.makeConstraints { make in
@@ -109,7 +110,8 @@ final class PersonsView: UIView {
         amountLabel.snp.makeConstraints { make in
             make.leading.equalTo(minusButton.snp.trailing).offset(8)
             make.trailing.equalTo(plusButton.snp.leading).offset(-8)
-            make.top.bottom.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(8)
+            make.bottom.equalToSuperview().offset(-8)
         }
     }
     
