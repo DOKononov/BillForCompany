@@ -66,7 +66,6 @@ class MainVC: UIViewController, MainVCDelegate {
         setupViews()
         setConstraints()
         delegate()
-        totalBillView.summTextField.becomeFirstResponder()
     }
     
     private func delegate() {

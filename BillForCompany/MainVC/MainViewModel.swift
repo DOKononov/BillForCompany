@@ -17,10 +17,11 @@ protocol MainViewProtocol {
     func minusButtonDidTapped(_ minus: UIButton, _ plus: UIButton) -> String
     func plusButtonDidTapped(_ plus: UIButton, _ minus: UIButton) -> String
     func calcResult() -> String
+    func textFieldDidEndEditing(_ textField: UITextField)
 }
 
 final class MainViewModel: MainViewProtocol {
-    
+
     var totalBill: Double = 0
     
     var tipsCount: Double = 0
@@ -53,6 +54,14 @@ final class MainViewModel: MainViewProtocol {
             return String(((totalBill + totalBill * tipsCount )  / Double(personsCounter)).myRound())
         } else {
             return "Error! persons == nil"
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text == "" {
+            textField.text = totalBill.myRound().description
+        } else if let str = textField.text, let bill = Double(str) {
+            textField.text = bill.myRound().description
         }
     }
     

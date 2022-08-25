@@ -11,7 +11,7 @@ import SnapKit
 final class TotalBillView: UIView {
     
     var delegate: MainVCDelegate?
-        
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Total Bill"
@@ -28,9 +28,9 @@ final class TotalBillView: UIView {
         tf.layer.cornerRadius = 10
         tf.textColor = .black
         tf.font = UIFont.systemFont(ofSize: 48, weight: .semibold)
-        tf.text = "0"
+        tf.text = "0.0"
         tf.textAlignment = .center
-        tf.keyboardType = .numberPad
+        tf.keyboardType = .decimalPad
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -72,7 +72,15 @@ final class TotalBillView: UIView {
 extension TotalBillView: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if let str = textField.text, let bill = Double(str) {
-            delegate?.viewModel.totalBill = bill
+            delegate?.viewModel.totalBill = bill.myRound()
         }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.viewModel.textFieldDidEndEditing(textField)
     }
 }
